@@ -2,9 +2,9 @@ describe('String', function () {
     'use strict';
 
     describe('#trim()', function () {
-        var mvs = '\u180E';
-        var mvsIsWS = (/\s/).test(mvs);
-        var test = '\x09\x0A\x0B\x0C\x0D\x20\xA0\u1680' + (mvsIsWS ? mvs : '') + '\u2000\u2001\u2002\u2003\u2004\u2005\u2006\u2007\u2008\u2009\u200A\u202F\u205F\u3000\u2028\u2029\uFEFFHello, World!\x09\x0A\x0B\x0C\x0D\x20\xA0\u1680' + (mvsIsWS ? mvs : '') + '\u2000\u2001\u2002\u2003\u2004\u2005\u2006\u2007\u2008\u2009\u200A\u202F\u205F\u3000\u2028\u2029\uFEFF';
+        let mvs = '\u180E';
+        let mvsIsWS = (/\s/).test(mvs);
+        let test = '\x09\x0A\x0B\x0C\x0D\x20\xA0\u1680' + (mvsIsWS ? mvs : '') + '\u2000\u2001\u2002\u2003\u2004\u2005\u2006\u2007\u2008\u2009\u200A\u202F\u205F\u3000\u2028\u2029\uFEFFHello, World!\x09\x0A\x0B\x0C\x0D\x20\xA0\u1680' + (mvsIsWS ? mvs : '') + '\u2000\u2001\u2002\u2003\u2004\u2005\u2006\u2007\u2008\u2009\u200A\u202F\u205F\u3000\u2028\u2029\uFEFF';
 
         it('trims all ES5 whitespace', function () {
             expect(test.trim()).toBe('Hello, World!');
@@ -12,7 +12,7 @@ describe('String', function () {
         });
 
         it('does not trim the zero-width space', function () {
-            var zws = '\u200b';
+            let zws = '\u200b';
             expect(zws.trim()).toBe(zws);
         });
 
@@ -27,7 +27,7 @@ describe('String', function () {
 
     describe('#replace()', function () {
         it('returns undefined for non-capturing groups', function () {
-            var groups = [];
+            let groups = [];
             'x'.replace(/x(.)?/g, function (m, group) {
                 groups.push(group); /* "" in FF, `undefined` in CH/WK/IE */
             });
@@ -46,7 +46,7 @@ describe('String', function () {
     });
 
     describe('#split()', function () {
-        var test = 'ab';
+        let test = 'ab';
 
         it('If "separator" is undefined must return Array with one String - "this" string', function () {
             expect(test.split()).toEqual([test]);
